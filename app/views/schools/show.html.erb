@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
   <%= @school.name %>
@@ -7,6 +6,21 @@
   <strong>Description:</strong>
   <%= @school.description %>
 </p>
-<%= link_to "Portal", portal_path %> |
-<%= link_to 'Back', schools_path %> |
-<%= link_to 'Edit', edit_school_path(@school) %>
+<% if @school.portal %>
+  <p><%= link_to "Portal", portal_path %> |
+    <%= link_to 'Back', schools_path %> </p>
+<% else %>
+  <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create portal</button>
+<% end %>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Upload</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <%= render 'portals/form' %>
+      </div>
+    </div>
+  </div>
+</div>

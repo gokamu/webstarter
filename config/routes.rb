@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :subjects
+  resources :levels
   resources :courses
-  resources :portals, only: [:show]
+  resources :portals
   resources :schools
   root "home#index"
   devise_for :admins, controllers: {
-             registrations: "registrations",
-           }
+                        registrations: "registrations",
+                      }
 end

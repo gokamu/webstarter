@@ -1,4 +1,7 @@
-<h1><%= @portal.school.name %> Portal</h1>
-<p>
-  <%= link_to "Website", school_path %>
-</p>
+<h1><%= link_to @portal.school.name, school_path %></h1>
+<ul>
+  <% @course.each do |course| %>
+    <li><%= course.name %></li>
+  <% end %>
+</ul>
+<%= javascript_pack_tag 'hello_react' %>

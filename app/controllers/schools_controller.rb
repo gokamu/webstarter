@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
+    current_admin
   end
 
   # GET /schools/new
@@ -25,7 +26,6 @@ class SchoolsController < ApplicationController
   # POST /schools.json
   def create
     @school = School.new(school_params)
-
     respond_to do |format|
       if @school.save
         format.html { redirect_to @school, notice: "School was successfully created." }
