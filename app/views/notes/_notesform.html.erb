@@ -1,0 +1,16 @@
+<%= form_with(model: Note.new, remote: true) do |f| %>
+  <div class="form-inputs">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, class: "form-control" %>
+  </div>
+  <div class="form-inputs">
+    <%= f.label :file %>
+    <%= f.file_field :file, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :course_id, value: @course.id %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

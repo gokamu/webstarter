@@ -1,9 +1,25 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @course.name %>
 </p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<ul>
+  <% @noteslist.each do |note| %>
+    <li>
+      <a href="<%= note.file %>" download><%= note.name %></a> | <a href="<%= note.file %>" download>Download</a>
+    </li>
+  <% end %>
+</ul>
+<%= javascript_pack_tag 'hello_react' %>
+<button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Upload Notes</button>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Upload</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <%= render 'notes/notesform' %>
+      </div>
+    </div>
+  </div>
+</div>

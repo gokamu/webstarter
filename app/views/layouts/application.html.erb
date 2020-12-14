@@ -4,12 +4,21 @@
     <title>Webstarter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <div class="notification bg-info global-notification p-2">
+        <p class="notice text-light text center"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="notification bg-danger global-notification p-2">
+        <p class="alert text-light text center"><%= alert %></p>
+      </div>
+    <% end %>
     <%= render 'layouts/header' %>
     <%= yield %>
   </body>

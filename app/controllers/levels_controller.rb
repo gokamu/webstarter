@@ -10,11 +10,15 @@ class LevelsController < ApplicationController
   # GET /levels/1
   # GET /levels/1.json
   def show
+    @portal = Portal.find(params[:id])
+    courses = Level.all
+    @courselist = @level.courses
   end
 
   # GET /levels/new
   def new
     @level = Level.new
+    @portal = Portal.find(params[:id])
   end
 
   # GET /levels/1/edit
@@ -28,7 +32,7 @@ class LevelsController < ApplicationController
 
     respond_to do |format|
       if @level.save
-        format.html { redirect_to @level, notice: 'Level was successfully created.' }
+        format.html { redirect_to @level, notice: "Level was successfully created." }
         format.json { render :show, status: :created, location: @level }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class LevelsController < ApplicationController
   def update
     respond_to do |format|
       if @level.update(level_params)
-        format.html { redirect_to @level, notice: 'Level was successfully updated.' }
+        format.html { redirect_to @level, notice: "Level was successfully updated." }
         format.json { render :show, status: :ok, location: @level }
       else
         format.html { render :edit }
@@ -56,19 +60,20 @@ class LevelsController < ApplicationController
   def destroy
     @level.destroy
     respond_to do |format|
-      format.html { redirect_to levels_url, notice: 'Level was successfully destroyed.' }
+      format.html { redirect_to levels_url, notice: "Level was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_level
-      @level = Level.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def level_params
-      params.require(:level).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_level
+    @level = Level.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def level_params
+    params.require(:level).permit(:name, :portal_id)
+  end
 end

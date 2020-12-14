@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notes
   resources :levels
   resources :courses
   resources :portals
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
                         registrations: "registrations",
                       }
+  resources :admins, :only => [:show]
 end

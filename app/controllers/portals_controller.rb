@@ -4,8 +4,8 @@ class PortalsController < ApplicationController
   def show
     @school = School.find(params[:id])
     @portal = Portal.find(params[:id])
-    courses = Course.all
-    @course = @portal.courses
+    levels = Level.all
+    @levelist = @portal.levels
   end
 
   def new

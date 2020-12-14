@@ -1,4 +1,4 @@
 class Course < ApplicationRecord
-  belongs_to :portal
-  has_many :subjects
+  belongs_to :level
+  has_many :notes
 end
