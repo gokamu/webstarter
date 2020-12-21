@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Schools</h1>
-
 <table>
   <thead>
     <tr>
@@ -10,7 +8,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @schools.each do |school| %>
       <tr>
@@ -23,7 +20,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New School', new_school_path %>

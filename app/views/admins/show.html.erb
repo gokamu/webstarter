@@ -16,7 +16,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <% if current_admin.schools %>
+      <% if current_admin.schools.any? %>
           <% current_admin.schools.each do |school| %>
             <li class="nav-item">
               <%= link_to school, class: "nav-link" do %>
