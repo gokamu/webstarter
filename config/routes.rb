@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :students, controllers: {
+                          students: "registrations",
+                        }
   resources :notes
   resources :levels
   resources :courses

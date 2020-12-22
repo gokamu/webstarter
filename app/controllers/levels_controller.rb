@@ -7,6 +7,10 @@ class LevelsController < ApplicationController
     @levels = Level.all
   end
 
+  def levels
+    @levels = Portal.first.levels
+  end
+
   # GET /levels/1
   # GET /levels/1.json
   def show

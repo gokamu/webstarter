@@ -7,6 +7,12 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  def my_courses
+    @my_courses = Level.first.courses
+
+    render json: { data: @my_courses }
+  end
+
   # GET /courses/1
   # GET /courses/1.json
   def show
