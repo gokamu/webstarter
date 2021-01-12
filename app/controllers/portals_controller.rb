@@ -4,8 +4,8 @@ class PortalsController < ApplicationController
   def show
     @school = School.find(params[:id])
     @portal = Portal.find(params[:id])
-    levels = Level.all
-    @levelist = @portal.levels
+    courses = Course.all
+    @courselist = @portal.courses
   end
 
   def new
@@ -22,7 +22,7 @@ class PortalsController < ApplicationController
   def create
     @portal = Portal.new(portal_params)
     if @portal.save
-      redirect_to @portal
+      redirect_to "/admin"
     else
       render :new
     end

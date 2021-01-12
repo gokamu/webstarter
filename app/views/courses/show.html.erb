@@ -2,6 +2,10 @@
   <strong>Name:</strong>
   <%= @course.name %>
 </p>
+<p>
+  <strong>Students Attending:</strong>
+  <%= @course.followers.count %>
+</p>
 <ul>
   <% @noteslist.each do |note| %>
     <li>
@@ -9,7 +13,6 @@
     </li>
   <% end %>
 </ul>
-<%= javascript_pack_tag 'hello_react' %>
 <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Upload Notes</button>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

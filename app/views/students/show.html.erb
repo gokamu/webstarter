@@ -1,0 +1,9 @@
+<% if @student.following?(@course) %>
+  <%= render 'unfollow' %>
+<% else %>
+  <%= render 'follow' %>
+<% end %>
+<p>
+  <strong> Course:</strong>
+  <%= @student.following.count %>
+</p>

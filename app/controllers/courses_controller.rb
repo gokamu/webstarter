@@ -7,11 +7,11 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
-  def my_courses
-    @my_courses = Level.first.courses
+  # def my_courses
+  #   @my_courses = Level.first.courses
 
-    render json: { data: @my_courses }
-  end
+  #   render json: { data: @my_courses }
+  # end
 
   # GET /courses/1
   # GET /courses/1.json
@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    @level = Level.find(params[:id])
+    @portal = Portal.find(params[:id])
   end
 
   # GET /courses/1/edit
@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: "Course was successfully created." }
+        format.html { redirect_to "/schoolcourses", notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -79,6 +79,6 @@ class CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:name, :level_id)
+    params.require(:course).permit(:name, :portal_id)
   end
 end

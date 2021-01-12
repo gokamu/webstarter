@@ -1,0 +1,25 @@
+<%= render 'dash' %>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <%= link_to "Create Teacher", new_teacher_registration_path %>
+  <h1>Teachers</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @school_teachers.each do |teacher| %>
+        <tr>
+          <td><%= teacher.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
+<!-- /.container-fluid -->
+<%= render 'dashend' %>

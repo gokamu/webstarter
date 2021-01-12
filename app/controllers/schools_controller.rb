@@ -27,7 +27,7 @@ class SchoolsController < ApplicationController
     @school = current_admin.schools.build(school_params)
     respond_to do |format|
       if @school.save
-        format.html { redirect_to @school, notice: "School was successfully created." }
+        format.html { redirect_to "/admin", notice: "School was successfully created." }
         format.json { render :show, status: :created, location: @school }
       else
         format.html { render :new }

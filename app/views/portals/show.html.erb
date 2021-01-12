@@ -1,14 +1,7 @@
 <h1><%= link_to @portal.school.name, school_path %></h1>
-<% if student_signed_in? %>
-  <%= link_to 'Settings', edit_student_registration_path %>
-  <%= link_to "Log Out", destroy_student_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign In", new_student_session_path %>
-  <%= link_to "Sign up", new_student_registration_path %>
-<% end %>
 <ul>
-  <% @levelist.each do |lvl| %>
-    <li><%= link_to lvl.name, lvl %></li>
+  <% @courselist.each do |course| %>
+    <li><%= link_to course.name, course %></li>
   <% end %>
 </ul>
 <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create level</button>
@@ -19,7 +12,7 @@
         <h4 class="card-title">Upload</h4>
       </div>
       <div class=" card col-8 offset-2 my-2 p-3">
-        <%= render 'levels/levelform' %>
+        <%= render 'courses/courseform' %>
       </div>
     </div>
   </div>
