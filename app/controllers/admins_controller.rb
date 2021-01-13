@@ -19,4 +19,9 @@ class AdminsController < ApplicationController
     current_admin
     @schoolcourses = current_admin.courses
   end
+
+  def classes
+    current_admin
+    @classes = current_admin.grades
+  end
 end

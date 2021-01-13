@@ -39,11 +39,6 @@
           </div>
         </li> %>
         <li class="nav-item">
-          <% if @school.portal %>
-            <%= link_to "Portal", portal_path, class: "nav-link" %>
-          <% else %>
-            <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create portal</button>
-          <% end %>
         </li>
       </ul>
     </div>

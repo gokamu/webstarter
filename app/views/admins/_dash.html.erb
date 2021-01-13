@@ -41,48 +41,43 @@
       <!-- Nav Item - Home -->
       <li class="nav-item">
         <%= link_to "/admin", class: "nav-link" do %>
-          <i class="fas fa-fw fa-chart-area"></i>
           <span>Home</span>
         <% end %>
       </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
+<% if current_admin.schools.any? %>
+      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>School Portal</span>
-        </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <%= link_to 'Courses', '/schoolcourses', class: "collapse-item" %>
-          </div>
-        </div>
+        <%= link_to '/classes', class: "nav-link" do %>
+        <span>Classes</span>
+        <% end %>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-     <li class="nav-item">
+      <li class="nav-item">
+        <%= link_to '/schoolcourses', class: "nav-link" do %>
+        <span>Courses</span>
+        <% end %>
+      </li>
+
+       <li class="nav-item">
         <%= link_to '/createstudent', class: "nav-link" do %>
-          <i class="fas fa-fw fa-chart-area"></i>
           <span>Students</span>
         <% end %>
       </li>
 
       <li class="nav-item">
         <%= link_to '/createteacher', class: "nav-link" do %>
-          <i class="fas fa-fw fa-chart-area"></i>
           <span>Teachers</span>
         <% end %>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
-
+      <% end %>
       <!-- Heading -->
       <div class="sidebar-heading">
         Addons
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <%# <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
@@ -122,7 +117,7 @@
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+      </div> %>
 
     </ul>
     <!-- End of Sidebar -->

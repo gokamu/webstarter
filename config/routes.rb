@@ -7,10 +7,9 @@ Rails.application.routes.draw do
                           registrations: "teachers/registrations",
                         }
   resources :notes
-  resources :portals
   resources :schools
   get "/admin", to: "admins#show"
-  get "/grades", to: "admins#grades"
+  get "/classes", to: "admins#classes"
   get "/schoolcourses", to: "admins#school_courses"
   root "home#index"
   devise_for :admins, controllers: {

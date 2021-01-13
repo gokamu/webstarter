@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    @portal = Portal.find(params[:id])
+    @grade = Grade.find(params[:id])
   end
 
   # GET /courses/1/edit
@@ -79,6 +79,6 @@ class CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:name, :portal_id)
+    params.require(:course).permit(:name, :grade_id)
   end
 end
