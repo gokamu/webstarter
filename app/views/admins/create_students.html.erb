@@ -15,7 +15,7 @@
     <tbody>
       <% @school_students.each do |student| %>
         <tr>
-          <td><%= student.email %></td>
+          <td><%= link_to student.email, student %></td>
           <td><%= student.grade_id %></td>
         </tr>
       <% end %>

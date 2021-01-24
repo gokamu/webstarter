@@ -14,7 +14,7 @@ class Student < ApplicationRecord
     following.delete(other_course)
   end
 
-  # Returns true if the current course is following the other course.
+  # Returns true if the student is following the other course.
   def following?(other_course)
     following.include?(other_course)
   end

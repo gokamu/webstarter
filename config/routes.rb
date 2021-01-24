@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   end
   get "/createstudent", to: "admins#create_students"
   get "/createteacher", to: "admins#create_teachers"
+  resources :relationships, only: [:create, :destroy]
 end
