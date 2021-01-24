@@ -1,0 +1,73 @@
+<h1>Hello <%= @teacher.email %></h1>
+<p>
+  <strong> Courses:</strong>
+  <%= @teacher.course_taught.count %>
+</p>
+<p>
+  <strong> Grades:</strong>
+  <%= @teacher.grade_taught.count %>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Class</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schoolcourses.each do |course| %>
+      <tr>
+        <td><%= link_to course.name, course %></td>
+        <td><%= course.grade.name %></td>
+        <% if @teacher.course_taught?(course) %>
+          <td>
+            <%= form_with(model: @teacher.active_teacher_courses.find_by(followed_id: course.id),
+             html: { method: :delete }, local: true) do |f| %>
+              <%= hidden_field_tag :follower_id, @teacher.id %>
+              <%= f.submit "Unfollow", class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= form_with(model: @teacher.active_teacher_courses.build, local: true) do |f| %>
+              <div><%= hidden_field_tag :followed_id, course.id %><%= hidden_field_tag :follower_id, @teacher.id %></div>
+              <%= f.submit "Add Course", class: "btn btn-primary" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schoolgrades.each do |grade| %>
+      <tr>
+        <td><%= link_to grade.name, grade %></td>
+        <% if @teacher.grade_taught?(grade) %>
+          <td>
+            <%= form_with(model: @teacher.active_teacher_grades.find_by(followed_id: grade.id),
+             html: { method: :delete }, local: true) do |f| %>
+              <%= hidden_field_tag :follower_id, @teacher.id %>
+              <%= f.submit "Unfollow", class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= form_with(model: @teacher.active_teacher_grades.build, local: true) do |f| %>
+              <div><%= hidden_field_tag :followed_id, grade.id %><%= hidden_field_tag :follower_id, @teacher.id %></div>
+              <%= f.submit "Add grade", class: "btn btn-primary" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

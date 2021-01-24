@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :grades
   devise_for :students, controllers: {
                           registrations: "students/registrations",
                         }
@@ -23,10 +22,24 @@ Rails.application.routes.draw do
   end
   resources :courses do
     member do
-      get :followers
+      get :followers, :course_teachers
     end
   end
+  resources :teachers do
+    member do
+      get :grade_taught, :course_taught
+    end
+  end
+
+  resources :grades do
+    member do
+      get :grade_teachers
+    end
+  end
+
   get "/createstudent", to: "admins#create_students"
   get "/createteacher", to: "admins#create_teachers"
-  resources :relationships, only: [:create, :destroy]
+  resources :student_courses, only: [:create, :destroy]
+  resources :teacher_courses, only: [:create, :destroy]
+  resources :teacher_grades, only: [:create, :destroy]
 end

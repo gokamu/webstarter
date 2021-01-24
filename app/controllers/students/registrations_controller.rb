@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  #   current_admin
-  # end
+  def new
+    super
+    current_admin
+  end
 
   # POST /resource
-  # def create
-  #   @student = Student.new(student_params)
-  #   if @student.save
-  #     redirect_to "/createstudent", notice: "student created successfully."
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @student = Student.new(student_params)
+    if @student.save
+      redirect_to "/createstudent", notice: "student created successfully."
+    else
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -47,13 +47,13 @@ class Students::RegistrationsController < Devise::RegistrationsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:school_id, :grade_id])
-  end
-
-  # def student_params
-  #   params.require(:student).permit(:email, :password, :password_confirmation, :school_id, :grade_id)
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:school_id, :grade_id])
   # end
+
+  def student_params
+    params.require(:student).permit(:email, :password, :password_confirmation, :school_id, :grade_id)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -61,9 +61,9 @@ class Students::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    current_student
-  end
+  # def after_sign_up_path_for(resource)
+  #   current_student
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
