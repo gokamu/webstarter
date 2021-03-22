@@ -50,16 +50,6 @@ class SchoolsController < ApplicationController
     end
   end
 
-  # DELETE /schools/1
-  # DELETE /schools/1.json
-  def destroy
-    @school.destroy
-    respond_to do |format|
-      format.html { redirect_to schools_url, notice: "School was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

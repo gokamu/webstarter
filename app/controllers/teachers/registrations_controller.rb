@@ -14,7 +14,7 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
-      redirect_to "/createteacher", notice: "Teacher created successfully."
+      redirect_to admin_createteacher_path(current_admin), notice: "Teacher created successfully."
     else
       render :new
     end

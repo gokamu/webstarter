@@ -14,7 +14,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to "/createstudent", notice: "student created successfully."
+      redirect_to admin_createstudent_path(current_admin), notice: "student created successfully."
     else
       render :new
     end

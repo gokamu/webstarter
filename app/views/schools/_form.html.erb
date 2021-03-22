@@ -1,23 +1,42 @@
-<%= form_with(model: school, local: true) do |form| %>
-  <% if school.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
-      <ul>
-        <% school.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="row justify-content-md-center">
+  <div class="col col-lg-4 mt-4">
+    <div class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <h2 class="text-center">Create School</h2>
+          <div class="column mt-4">
+          <%= form_with(model: school, local: true) do |form| %>
+            <% if school.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
+                <ul>
+                  <% school.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="field">
+              <div class="control">
+              <%= form.label :name %>
+              <%= form.text_field :name, class:"form-control" %>
+            </div>
+            </div>
+            <div class="field">
+            <div class="control">
+              <%= form.label :description %>
+              <%= form.text_area :description, class:"form-control" %>
+            </div>
+            </div>
+            <div class="field">
+            <div class="control">
+              <%= form.button :submit, class: "btn btn-success is-medium" %>
+            </div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

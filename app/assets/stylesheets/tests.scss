@@ -1,3 +1,29 @@
-// Place all the styles related to the Tests controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.bgimg {
+    background: image_url('background.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+  }
+  
+  .topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+  }
+  
+  .bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+  }
+  
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }

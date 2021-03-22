@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :test_scores
   resources :assignment_scores
   resources :courses, only: [:edit, :create, :destroy, :update, :index]
-  resources :schools do
+  resources :schools, only: [:edit, :create, :update, :index, :new, :show] do
     resources :grades do
       resources :courses, only: [:show, :index] do
         member do

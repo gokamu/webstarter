@@ -51,6 +51,7 @@
         <% end %>
       </li>
 
+      <% if current_admin.school.grades.any? %>
        <li class="nav-item">
         <%= link_to admin_createstudent_path(current_admin), class: "nav-link" do %>
           <span>Students</span>
@@ -62,6 +63,7 @@
           <span>Teachers</span>
         <% end %>
       </li>
+      <% end %>
       <!-- Divider -->
       <hr class="sidebar-divider">
       <% end %>

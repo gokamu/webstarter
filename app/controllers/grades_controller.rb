@@ -11,7 +11,22 @@ class GradesController < ApplicationController
   # GET /grades/1.json
   def show
     current_admin
+    @grade_students = Student.where(grade_id: @grade.id)
     @schoolcourses = Course.where(grade_id: @grade.id)
+
+    if !(admin_signed_in? && current_admin.grades)
+      if current_admin
+        redirect_to school_path(current_admin.school.id)
+      elsif current_student
+        redirect_to school_path(current_student.school_id)
+      elsif current_teacher
+        redirect_to school_path(current_teacher.school_id)
+      else
+        redirect_to root_path
+      end
+      flash[:alert] = "You are not authorized!"
+    end
+
   end
 
   # GET /grades/new
@@ -30,7 +45,7 @@ class GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.save
-        format.html { redirect_to "/classes", notice: "Grade was successfully created." }
+        format.html { redirect_to admin_classes_path(current_admin), notice: "Grade was successfully created." }
         format.json { render :show, status: :created, location: @grade }
       else
         format.html { render :new }

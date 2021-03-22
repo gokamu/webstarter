@@ -1,5 +1,4 @@
 <%= render 'schools/header' %>
-<% if current_student == @student || current_admin == @school.admin_id || teacher_signed_in? && current_teacher.school.id == @student.school_id  %>
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
@@ -25,9 +24,10 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <%= link_to school_student_path(@student.school, @student.id), class: "nav-link" do %>
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Dashboard</span>
+      <% end %>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -191,6 +191,3 @@
   <!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
-<% else %>
-  <h1 class="text-center pt-5">You dont have access to the page</h1>
-<% end %>

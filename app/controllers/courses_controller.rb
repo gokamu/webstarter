@@ -1,19 +1,10 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
-  # GET /courses
-  # GET /courses.json
   def index
     @courses = Course.all
   end
 
-  # def my_courses
-  #   @my_courses = Level.first.courses
-
-  #   render json: { data: @my_courses }
-  # end
-  # GET /courses/1
-  # GET /courses/1.json
   def show
     notes = Course.all
     tests = Test.all
@@ -22,8 +13,13 @@ class CoursesController < ApplicationController
     @testslist = @course.tests
     @assignmentslist = @course.assignments
     @course_students = @course.followers
+    @auth_admin = admin_signed_in? && school_grade_course_path(current_admin.school.id, @course.grade, @course)
+    @auth_course = school_grade_course_path(@course.grade.school_id, @course.grade, @course)
+    @auth_student = student_signed_in? && current_student.following?(@course)
+    @auth_teacher = teacher_signed_in? && current_teacher.course_taught?(@course) 
 
-    if !(admin_signed_in? && school_grade_course_path(current_admin.school.id, @course.grade, @course) || student_signed_in? && current_student.following?(@course) || teacher_signed_in? && current_teacher.course_taught?(@course))
+    # this redicts users who are not authorized to access the course show page
+    if !(@auth_admin == @auth_course || @auth_student || @auth_teacher)
       if current_admin
         redirect_to school_path(current_admin.school.id)
       elsif current_student
@@ -33,6 +29,7 @@ class CoursesController < ApplicationController
       else
         redirect_to root_path
       end
+      flash[:alert] = "You are not authorized!"
     end
   end
 
