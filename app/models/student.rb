@@ -1,5 +1,7 @@
 class Student < ApplicationRecord
   belongs_to :school
+  has_many :test_score
+  has_many :assignment_score
   has_many :active_student_courses, class_name: "StudentCourse",
                                     foreign_key: "follower_id",
                                     dependent: :destroy

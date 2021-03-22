@@ -12,18 +12,21 @@ class CoursesController < ApplicationController
 
   #   render json: { data: @my_courses }
   # end
-
   # GET /courses/1
   # GET /courses/1.json
   def show
     notes = Course.all
+    tests = Test.all
+    assignments = Assignment.all
     @noteslist = @course.notes
+    @testslist = @course.tests
+    @assignmentslist = @course.assignments
+    @course_students = @course.followers
   end
 
   # GET /courses/new
   def new
     @course = Course.new
-    @grade = Grade.find(params[:id])
   end
 
   # GET /courses/1/edit
@@ -37,7 +40,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to "/schoolcourses", notice: "Course was successfully created." }
+        format.html { redirect_to school_grade_course_path(current_admin.school.id, @course.grade, @course), notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }

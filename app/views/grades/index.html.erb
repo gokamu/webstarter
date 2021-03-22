@@ -14,9 +14,9 @@
     <% @grades.each do |grade| %>
       <tr>
         <td><%= grade.name %></td>
-        <td><%= link_to 'Show', grade %></td>
-        <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-        <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [grade.school, grade] %></td>
+        <td><%= link_to 'Edit', edit_school_grade_path(grade.school, grade) %></td>
+        <td><%= link_to 'Destroy', [grade.school, grade], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Grade', new_grade_path %>
+<%= link_to 'New Grade', new_school_grade_path %>

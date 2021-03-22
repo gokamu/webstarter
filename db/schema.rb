@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_143233) do
+ActiveRecord::Schema.define(version: 2021_01_26_192106) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 2021_01_24_143233) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "assignment_scores", force: :cascade do |t|
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "assignment_id"
+    t.integer "student_id"
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -109,6 +125,22 @@ ActiveRecord::Schema.define(version: 2021_01_24_143233) do
     t.integer "school_id"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
+  end
+
+  create_table "test_scores", force: :cascade do |t|
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "test_id"
+    t.integer "student_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "course_id"
   end
 
 end

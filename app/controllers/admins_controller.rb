@@ -5,19 +5,14 @@ class AdminsController < ApplicationController
 
   def create_students
     current_admin
-    students = current_admin.schools
+    students = current_admin.school
     @school_students = Student.where(:school_id => current_admin)
   end
 
   def create_teachers
     current_admin
-    teachers = current_admin.schools
+    teachers = current_admin.school
     @school_teachers = Teacher.where(:school_id => current_admin)
-  end
-
-  def school_courses
-    current_admin
-    @schoolcourses = current_admin.courses
   end
 
   def classes

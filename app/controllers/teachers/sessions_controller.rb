@@ -18,8 +18,14 @@ class Teachers::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+  def after_sign_in_path_for(resource)
+    school_teacher_path(current_teacher.school, current_teacher)
+  end
 
+  def after_sign_out_path_for(resource)
+    new_teacher_session_path
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

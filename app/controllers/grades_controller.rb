@@ -10,11 +10,13 @@ class GradesController < ApplicationController
   # GET /grades/1
   # GET /grades/1.json
   def show
+    current_admin
+    @schoolcourses = Course.where(grade_id: @grade.id)
   end
 
   # GET /grades/new
   def new
-    @grade = Grade.new
+    @school = School.find(params[:id])
   end
 
   # GET /grades/1/edit

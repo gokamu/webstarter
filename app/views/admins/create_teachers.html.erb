@@ -14,7 +14,7 @@
     <tbody>
       <% @school_teachers.each do |teacher| %>
         <tr>
-          <td><%= link_to teacher.email, teacher %></td>
+          <td><%= link_to teacher.email, [teacher.school, teacher] %></td>
         </tr>
       <% end %>
     </tbody>

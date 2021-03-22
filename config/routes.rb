@@ -1,41 +1,50 @@
 Rails.application.routes.draw do
+  
+  devise_for :admins, controllers: {
+    registrations: "admins/registrations",
+    sessions: "admins/sessions",
+  }
   devise_for :students, controllers: {
                           registrations: "students/registrations",
+                          sessions: "students/sessions",
                         }
   devise_for :teachers, controllers: {
                           registrations: "teachers/registrations",
+                          sessions: "teachers/sessions",
                         }
   resources :notes
-  resources :schools
-  get "/admin", to: "admins#show"
+  resources :tests
+  resources :assignments
+  resources :test_scores
+  resources :assignment_scores
+  resources :courses, only: [:edit, :create, :destroy, :update, :index]
+  resources :schools do
+    resources :grades do
+      resources :courses, only: [:show, :index] do
+        member do
+          get :followers, :course_teachers
+        end
+      end
+      member do
+        get :grade_teachers
+      end
+    end
+    resources :students, only: [:show] do
+      member do
+        get :following
+      end
+    end
+    resources :teachers, only: [:show] do
+      member do
+        get :grade_taught, :course_taught
+      end
+    end
+  end
+  
   get "/classes", to: "admins#classes"
-  get "/schoolcourses", to: "admins#school_courses"
   root "home#index"
-  devise_for :admins, controllers: {
-                        registrations: "registrations",
-                      }
-  resources :admins, :only => [:show]
-  resources :students do
-    member do
-      get :following
-    end
-  end
-  resources :courses do
-    member do
-      get :followers, :course_teachers
-    end
-  end
-  resources :teachers do
-    member do
-      get :grade_taught, :course_taught
-    end
-  end
 
-  resources :grades do
-    member do
-      get :grade_teachers
-    end
-  end
+  resources :admins, :only => [:show]
 
   get "/createstudent", to: "admins#create_students"
   get "/createteacher", to: "admins#create_teachers"

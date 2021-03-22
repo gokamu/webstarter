@@ -1,19 +1,108 @@
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
-<p>
-  <strong>Students Attending:</strong>
-  <%= @course.followers.count %>
-</p>
-<ul>
-  <% @noteslist.each do |note| %>
-    <li>
-      <a href="<%= note.file %>" download><%= note.name %></a> | <a href="<%= note.file %>" download>Download</a>
-    </li>
-  <% end %>
-</ul>
-<button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Upload Notes</button>
+<%= render 'schools/header' %>
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div class="col-lg-3 col-md-3 col-12 order-2 order-lg-1">
+      <% if student_signed_in? %>
+        <div class="card" style="width: 100%;">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="35%" y="50%" fill="#dee2e6" dy=".1em">Profile Picture</text></svg>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to current_student.email, [current_student.school, current_student] %></h5>
+            <p class="card-text"><%= current_student.grade_id %></p>
+          </div>
+        </div>
+      <% elsif teacher_signed_in? %>
+        <div class="card" style="width: 100%;">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="35%" y="50%" fill="#dee2e6" dy=".1em">Profile Picture</text></svg>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to current_teacher.email, [current_teacher.school, current_teacher] %></h5>
+            <hr>
+            <h6 class="card-title text-center">Upload</h6>
+            <p class="card-text text-center">
+              <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Notes</button>
+              <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-tes-modal-lg"><i class="fa fa-plus"></i> Test</button>
+            </p>
+            <p class="card-text text-center">
+              <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-assignments-modal-lg"><i class="fa fa-plus"></i> Assignment</button>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+      <ul class="list-group">
+        <li class="list-group-item bg-light">Participants: <%= @course_students.count %></li>
+        <% @course_students.each do |course_student| %>
+          <li class="list-group-item border">
+            <% if teacher_signed_in? || admin_signed_in? %>
+              <%= link_to course_student.email, [course_student.school, course_student] %>
+            <% else %>
+              <%= course_student.email %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-lg-9 col-md-9 col-12 order-1 order-lg-2">
+      <h1>
+        <strong><%= @course.name.capitalize %></strong>
+      </h1>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm mt-4">
+            <div class="card">
+              <h5 class="card-header alert-primary">Reading Materials: <%= @noteslist.count %></h5>
+              <div class="card-body">
+                <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-notes-modal-lg"></i>Open</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm mt-4">
+          <div class="card">
+            <h5 class="card-header alert-danger">Tests: <%= @testslist.count %></h5>
+            <div class="card-body">
+              <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-tests-modal-lg"></i>Open</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm mt-4">
+        <div class="card">
+          <h5 class="card-header alert-warning">Assignments: <%= @assignmentslist.count %></h5>
+          <div class="card-body">
+            <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-assign-modal-lg"></i>Open</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm mt-4">
+      <div class="card">
+        <h5 class="card-header alert-success">Discussion</h5>
+        <div class="card-body">
+          <a href="#" class="btn btn-outline-dark">Open</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm mt-4">
+      <div class="card">
+        <h5 class="card-header">Online Classes</h5>
+        <div class="card-body">
+          <a href="#" class="btn btn-outline-dark">Open</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm mt-4">
+      <div class="card">
+        <h5 class="card-header alert-info">Assessment</h5>
+        <div class="card-body">
+          <button id="add__new__list" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-assess-modal-lg"></i>Open</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<%# Upload notes form %>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -22,6 +111,153 @@
       </div>
       <div class=" card col-8 offset-2 my-2 p-3">
         <%= render 'notes/notesform' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# Upload test form %>
+<div class="modal fade bd-tes-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Upload</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <%= render 'tests/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# Upload assignment form %>
+<div class="modal fade bd-assignments-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Upload</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <%= render 'assignments/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# Notes table %>
+<div class="modal fade bd-notes-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Documents Uploaded</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <% if @noteslist.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>File</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @noteslist.each do |note| %>
+                <tr>
+                  <td><%= note.name %></td>
+                  <td><a href="<%= note.file %>" download>Download</a></td>
+                  <td><%= link_to 'Edit', edit_note_path(note) %></td>
+                  <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>Nothing uploaded yet</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# tests table %>
+<div class="modal fade bd-tests-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Tests Uploaded</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <% if @testslist.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>File</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @testslist.each do |note| %>
+                <tr>
+                  <td><%= note.name %></td>
+                  <td><a href="<%= note.file %>" download>Download</a></td>
+                  <td><%= link_to 'Edit', edit_note_path(note) %></td>
+                  <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>Nothing uploaded yet</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# assignments %>
+<div class="modal fade bd-assign-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Assignments</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <% if @assignmentslist.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>File</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @assignmentslist.each do |note| %>
+                <tr>
+                  <td><%= note.name %></td>
+                  <td><a href="<%= note.file %>" download>Download</a></td>
+                  <td><%= link_to 'Edit', edit_note_path(note) %></td>
+                  <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>Nothing uploaded yet</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# assessment table %>
+<div class="modal fade bd-assess-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Assessment</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <% if @noteslist.any? %>
+        <% else %>
+          <p>Nothing uploaded yet</p>
+        <% end %>
       </div>
     </div>
   </div>

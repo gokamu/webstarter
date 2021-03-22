@@ -1,6 +1,6 @@
 class Admin < ApplicationRecord
-  has_many :schools
-  has_many :grades, through: :schools
+  has_one :school
+  has_many :grades, through: :school
   has_many :courses, through: :grades
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

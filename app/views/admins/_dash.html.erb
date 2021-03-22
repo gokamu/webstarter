@@ -1,3 +1,4 @@
+<%= render 'schools/header' %>
 <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -16,15 +17,13 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <% if current_admin.schools.any? %>
-          <% current_admin.schools.each do |school| %>
+      <% if current_admin.school %>
             <li class="nav-item">
-              <%= link_to school, class: "nav-link" do %>
+              <%= link_to current_admin.school, class: "nav-link" do %>
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span><%= school.name %></span>
+                <span><%= current_admin.school.name %></span>
               <% end %>
             </li>
-          <% end %>
       <% else %>
       <li class="nav-item">
             <span><button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create School</button></span>
@@ -44,17 +43,11 @@
           <span>Home</span>
         <% end %>
       </li>
-<% if current_admin.schools.any? %>
+<% if current_admin.school %>
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <%= link_to '/classes', class: "nav-link" do %>
         <span>Classes</span>
-        <% end %>
-      </li>
-
-      <li class="nav-item">
-        <%= link_to '/schoolcourses', class: "nav-link" do %>
-        <span>Courses</span>
         <% end %>
       </li>
 
