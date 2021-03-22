@@ -22,6 +22,18 @@ class CoursesController < ApplicationController
     @testslist = @course.tests
     @assignmentslist = @course.assignments
     @course_students = @course.followers
+
+    if !(admin_signed_in? && school_grade_course_path(current_admin.school.id, @course.grade, @course) || student_signed_in? && current_student.following?(@course) || teacher_signed_in? && current_teacher.course_taught?(@course))
+      if current_admin
+        redirect_to school_path(current_admin.school.id)
+      elsif current_student
+        redirect_to school_path(current_student.school_id)
+      elsif current_teacher
+        redirect_to school_path(current_teacher.school_id)
+      else
+        redirect_to root_path
+      end
+    end
   end
 
   # GET /courses/new

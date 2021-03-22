@@ -50,7 +50,7 @@
         </div>
       </div>
     </li>
-    <% if current_admin %>
+    <% if current_admin == @school.admin_id %>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePages">
           <i class="fa fa-fw fa-folder"></i>

@@ -1,3 +1,4 @@
+<% if admin_signed_in? && current_admin.grades %>
 <%= render 'admins/dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -52,4 +53,6 @@
 </div>
 <!-- /.container-fluid -->
 <%= render 'admins/dashend' %>
-
+<% else %>
+  <h1 class="text-center pt-5">You dont have access to the page</h1>
+<% end %>

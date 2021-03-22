@@ -24,7 +24,7 @@ class Students::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    new_student_session_path
+    request.referrer || @student
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

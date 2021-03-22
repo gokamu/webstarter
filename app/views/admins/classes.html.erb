@@ -1,4 +1,4 @@
-
+<% if @classes %>
 <%= render 'dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -48,3 +48,6 @@
 </div>
 <!-- /.container-fluid -->
 <%= render 'dashend' %>
+<% else %>
+  <h1 class="text-center pt-5">You dont have access to the page</h1>
+<% end %>

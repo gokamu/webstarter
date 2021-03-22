@@ -41,13 +41,13 @@ Rails.application.routes.draw do
     end
   end
   
-  get "/classes", to: "admins#classes"
   root "home#index"
 
-  resources :admins, :only => [:show]
-
-  get "/createstudent", to: "admins#create_students"
-  get "/createteacher", to: "admins#create_teachers"
+  resources :admins, :only => [:show] do
+    get "/createstudent", to: "admins#create_students"
+    get "/createteacher", to: "admins#create_teachers"
+    get "/classes", to: "admins#classes"
+  end
   resources :student_courses, only: [:create, :destroy]
   resources :teacher_courses, only: [:create, :destroy]
   resources :teacher_grades, only: [:create, :destroy]

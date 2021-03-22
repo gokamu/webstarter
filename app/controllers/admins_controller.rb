@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
+  before_action :authenticate_admin!
   def show
-    current_admin
+    @admin = Admin.find(params[:id])
   end
 
   def create_students
@@ -10,13 +11,11 @@ class AdminsController < ApplicationController
   end
 
   def create_teachers
-    current_admin
     teachers = current_admin.school
     @school_teachers = Teacher.where(:school_id => current_admin)
   end
 
   def classes
-    current_admin
     @classes = current_admin.grades
   end
 end

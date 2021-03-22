@@ -6,24 +6,24 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <%= link_to current_admin, class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-      </a>
+        <div class="sidebar-brand-text mx-3">Admin</div>
+      <% end %>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
       <% if current_admin.school %>
-            <li class="nav-item">
-              <%= link_to current_admin.school, class: "nav-link" do %>
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span><%= current_admin.school.name %></span>
-              <% end %>
-            </li>
+        <li class="nav-item">
+          <%= link_to current_admin.school, class: "nav-link" do %>
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span><%= current_admin.school.name %></span>
+          <% end %>
+        </li>
       <% else %>
       <li class="nav-item">
             <span><button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create School</button></span>
@@ -39,26 +39,26 @@
 
       <!-- Nav Item - Home -->
       <li class="nav-item">
-        <%= link_to "/admin", class: "nav-link" do %>
+        <%= link_to current_admin, class: "nav-link" do %>
           <span>Home</span>
         <% end %>
       </li>
-<% if current_admin.school %>
+      <% if current_admin.school %>
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <%= link_to '/classes', class: "nav-link" do %>
+        <%= link_to admin_classes_path(current_admin), class: "nav-link" do %>
         <span>Classes</span>
         <% end %>
       </li>
 
        <li class="nav-item">
-        <%= link_to '/createstudent', class: "nav-link" do %>
+        <%= link_to admin_createstudent_path(current_admin), class: "nav-link" do %>
           <span>Students</span>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to '/createteacher', class: "nav-link" do %>
+        <%= link_to admin_createteacher_path(current_admin), class: "nav-link" do %>
           <span>Teachers</span>
         <% end %>
       </li>
