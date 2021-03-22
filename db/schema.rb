@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_174945) do
+ActiveRecord::Schema.define(version: 2021_03_22_181831) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_174945) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.string "name"
+    t.string "username"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_174945) do
     t.integer "grade_id"
     t.string "slug"
     t.string "name"
+    t.string "username"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -144,6 +146,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_174945) do
     t.integer "school_id"
     t.string "slug"
     t.string "name"
+    t.string "username"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end

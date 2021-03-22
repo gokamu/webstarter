@@ -95,7 +95,7 @@
             <div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-success"><%= @student.email.capitalize %>'s Performance</h6>
+                <h6 class="m-0 font-weight-bold text-success"><%= @student.name.capitalize %>'s Performance</h6>
               </div>
               <!-- Card Body -->
               <div class="card-body">
@@ -118,7 +118,7 @@
                   <div class="card" style="width: 100%;">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="35%" y="50%" fill="#dee2e6" dy=".1em">Profile Picture</text></svg>
                     <div class="card-body">
-                      <h5 class="card-title"><%= @student.email %></h5>
+                      <h5 class="card-title"><%= @student.name %></h5>
                     </div>
                   </div>
                 </div>

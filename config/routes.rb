@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   resources :assignments
   resources :test_scores
   resources :assignment_scores
-  resources :courses, only: [:edit, :create, :destroy, :update, :index]
+  resources :courses, only: [:edit, :create, :destroy, :update]
   resources :schools, only: [:edit, :create, :update, :index, :new, :show] do
-    resources :grades do
-      resources :courses, only: [:show, :index] do
+    resources :grades, only: [:edit, :create, :destroy, :update, :show] do
+      resources :courses, only: [:show] do
         member do
           get :followers, :course_teachers
         end

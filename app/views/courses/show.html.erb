@@ -6,7 +6,7 @@
         <div class="card" style="width: 100%;">
           <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="35%" y="50%" fill="#dee2e6" dy=".1em">Profile Picture</text></svg>
           <div class="card-body">
-            <h5 class="card-title"><%= link_to current_student.email, [current_student.school, current_student] %></h5>
+            <h5 class="card-title"><%= link_to current_student.name, [current_student.school, current_student] %></h5>
             <p class="card-text"><%= current_student.grade_id %></p>
           </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="card" style="width: 100%;">
           <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="35%" y="50%" fill="#dee2e6" dy=".1em">Profile Picture</text></svg>
           <div class="card-body">
-            <h5 class="card-title"><%= link_to current_teacher.email, [current_teacher.school, current_teacher] %></h5>
+            <h5 class="card-title"><%= link_to current_teacher.name, [current_teacher.school, current_teacher] %></h5>
             <hr>
             <h6 class="card-title text-center">Upload</h6>
             <p class="card-text text-center">
@@ -33,9 +33,9 @@
         <% @course_students.each do |course_student| %>
           <li class="list-group-item border">
             <% if teacher_signed_in? || admin_signed_in? %>
-              <%= link_to course_student.email, [course_student.school, course_student] %>
+              <%= link_to course_student.name, [course_student.school, course_student] %>
             <% else %>
-              <%= course_student.email %>
+              <%= course_student.name %>
             <% end %>
           </li>
         <% end %>

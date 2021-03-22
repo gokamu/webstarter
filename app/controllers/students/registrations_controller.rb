@@ -52,7 +52,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
   # end
 
   def student_params
-    params.require(:student).permit(:name, :email, :password, :password_confirmation, :school_id, :grade_id)
+    params.require(:student).permit(:username, :name, :email, :password, :password_confirmation, :school_id, :grade_id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

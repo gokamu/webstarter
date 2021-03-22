@@ -52,7 +52,7 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   # end
 
   def teacher_params
-    params.require(:teacher).permit(:name, :email, :password, :password_confirmation, :school_id)
+    params.require(:teacher).permit(:username, :name, :email, :password, :password_confirmation, :school_id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
