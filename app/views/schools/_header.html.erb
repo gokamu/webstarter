@@ -4,7 +4,11 @@
     <% if teacher_signed_in? %>
       <%= link_to current_teacher.school.name, current_teacher.school, class: "navbar-brand" %>
     <% elsif admin_signed_in? %>
-      <%= link_to current_admin.school.name, current_admin.school, class: "navbar-brand" %>
+      <% if current_admin.school != nil %>
+        <%= link_to current_admin.school.name, current_admin.school, class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
+      <% end %>
     <% elsif student_signed_in? %>
       <%= link_to current_student.school.name, current_student.school, class: "navbar-brand" %>
     <% else %>
