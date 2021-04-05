@@ -1,28 +1,23 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
-  # GET /schools
-  # GET /schools.json
+ 
   def index
     @schools = School.all
   end
 
-  # GET /schools/1
-  # GET /schools/1.json
+
   def show
-    current_admin
+    @school = School.find_by(custom_domain: request.host) || School.find(params[:id])
+    check_signed_user
   end
 
-  # GET /schools/new
   def new
     @school = School.new
   end
 
-  # GET /schools/1/edit
   def edit
   end
 
-  # POST /schools
-  # POST /schools.json
   def create
     @school = current_admin.create_school(school_params)
     respond_to do |format|
@@ -36,8 +31,7 @@ class SchoolsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /schools/1
-  # PATCH/PUT /schools/1.json
+ 
   def update
     respond_to do |format|
       if @school.update(school_params)
@@ -52,12 +46,10 @@ class SchoolsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_school
     @school = School.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def school_params
     params.require(:school).permit(:name, :description)
   end

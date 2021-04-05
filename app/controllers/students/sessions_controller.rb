@@ -2,7 +2,6 @@
 
 class Students::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
-  protect_from_forgery with: :exception
 
   # GET /resource/sign_in
   # def new

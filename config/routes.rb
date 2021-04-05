@@ -1,4 +1,14 @@
+require 'custom_domain'
+
 Rails.application.routes.draw do
+  constraints Subdomain do 
+    resources :schools, only: [:show]
+  end
+
+  constraints Domain do 
+    resources :schools, only: [:show]
+  end
+
   devise_for :admins, controllers: {
     registrations: "admins/registrations",
     sessions: "admins/sessions",
@@ -17,7 +27,7 @@ Rails.application.routes.draw do
   resources :test_scores
   resources :assignment_scores
   resources :courses, only: [:edit, :create, :destroy, :update]
-  resources :schools, only: [:edit, :create, :update, :index, :new, :show] do
+  resources :schools, except: [:destroy, :show] do
     resources :grades, only: [:edit, :create, :destroy, :update, :show] do
       resources :courses, only: [:show] do
         member do
