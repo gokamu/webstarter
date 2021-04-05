@@ -3,11 +3,11 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("channels");
+require("jquery");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -15,20 +15,19 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import "bootstrap"
-  
-$(document).ready(function () {
-  $('[data-toggle="offcanvas"]').click(function () {
-    $("#navigation").toggleClass("hidden-xs");
-  });
+import "bootstrap";
+
+document.addEventListener("turbolinks:load", function () {
+  var notification = document.querySelector(".global-notification");
+
+  if (notification) {
+    window.setTimeout(function () {
+      notification.style.display = "none";
+    }, 4000);
+  }
 });
 
-var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
-triggerTabList.forEach(function (triggerEl) {
-  var tabTrigger = new bootstrap.Tab(triggerEl)
-
-  triggerEl.addEventListener('click', function (event) {
-    event.preventDefault()
-    tabTrigger.show()
-  })
-})  
+$("#menu-toggle").click(function (e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
