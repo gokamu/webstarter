@@ -9,6 +9,7 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find_by(custom_domain: request.host) || School.find(params[:id])
     check_signed_user
+    @blogs = Blog.where(school_id: @school.id)
   end
 
   def new

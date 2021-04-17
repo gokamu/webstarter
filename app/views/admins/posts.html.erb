@@ -1,0 +1,72 @@
+<%= render 'dash' %>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1>Posts</h1>
+  <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg">
+  <i class="fa fa-plus"></i> Create post
+  </button>
+   <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Title</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+               <% @blogs.each do |post| %>
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2 resize">
+                    <%= image_tag post.image_url class: "shadow-sm" %>
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><%= link_to post.title, [post.school, post] %></a></h5>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                </tr>
+               <% end %>
+              </tbody>
+            </table>
+        </div>
+  <br>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card-body text-center">
+        <h4 class="card-title">Post</h4>
+      </div>
+      <div class=" card col-8 offset-2 my-2 p-3">
+        <%= form_for [current_admin.school, Blog.new] do |f| %>
+        <div class="form-inputs">
+            <%= f.label :image %>
+            <%= f.file_field :image, class: "form-control" %>
+        </div>
+        <div class="form-inputs">
+            <%= f.label :title %>
+            <%= f.text_field :title, required: true, class: "form-control" %>
+        </div>
+        <div class="form-inputs">
+            <%= f.label :description %>
+            <%= f.text_field :description, required: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.hidden_field :school_id, value: current_admin.school.id %>
+        </div>
+        <div class="form-actions">
+            <%= f.button :submit %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+<%= render 'dashend' %>

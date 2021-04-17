@@ -2,11 +2,11 @@ require 'custom_domain'
 
 Rails.application.routes.draw do
   # constraints Subdomain do 
-  #   resources :schools, only: [:show]
+  #   get "schools/:id", to: "schools#show"
   # end
 
   # constraints Domain do 
-  #   resources :schools, only: [:show]
+  #   get "schools/:id", to: "schools#show"
   # end
 
   devise_for :admins, controllers: {
@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   resources :assignments
   resources :test_scores
   resources :assignment_scores
+  resources :blogs
   resources :courses, only: [:edit, :create, :destroy, :update]
   resources :schools, except: [:destroy] do
+    resources :blogs
     resources :grades, only: [:edit, :create, :destroy, :update, :show] do
       resources :courses, only: [:show] do
         member do
@@ -56,6 +58,7 @@ Rails.application.routes.draw do
     get "/createstudent", to: "admins#create_students"
     get "/createteacher", to: "admins#create_teachers"
     get "/classes", to: "admins#classes"
+    get "/posts", to: "admins#posts"
   end
   resources :student_courses, only: [:create, :destroy]
   resources :teacher_courses, only: [:create, :destroy]

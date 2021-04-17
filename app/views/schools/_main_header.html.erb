@@ -1,0 +1,65 @@
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light inde" id="mainNav">
+    <div class="container">
+      <% if teacher_signed_in? %>
+        <%= link_to current_teacher.school.name.capitalize, current_teacher.school, class: "navbar-brand" %>
+      <% elsif admin_signed_in? %>
+        <% if current_admin.school != nil %>
+          <%= link_to current_admin.school.name.capitalize, current_admin.school, class: "navbar-brand" %>
+        <% else %>
+          <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
+        <% end %>
+      <% elsif student_signed_in? %>
+        <%= link_to current_student.school.name.capitalize, current_student.school, class: "navbar-brand" %>
+      <% elsif %>
+        <%= link_to @school.name.capitalize, @school, class: "navbar-brand" %>
+      <% end %>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+         <% if !admin_signed_in? %>
+          <% if !student_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Stuff
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <% if teacher_signed_in? %>
+                  <%= link_to current_teacher.name, [current_teacher.school, current_teacher], class: "dropdown-item" %>
+                  <%= link_to "Log Out", destroy_teacher_session_path, method: :delete, class: "dropdown-item" %>
+                <% else %>
+                  <%= link_to "Sign In", new_teacher_session_path, class: "dropdown-item" %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+          <% if !teacher_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Student
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <% if student_signed_in? %>
+                  <%= link_to current_student.name, [current_student.school, current_student], class: "dropdown-item" %>
+                  <%= link_to "Log Out", destroy_student_session_path, method: :delete, class: "dropdown-item" %>
+                <% else %>
+                  <%= link_to "Sign In", new_student_session_path, class: "dropdown-item" %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Dashboard", current_admin, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log Out", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>

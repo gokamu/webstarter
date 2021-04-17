@@ -70,4 +70,8 @@ class AdminsController < ApplicationController
       flash[:alert] = "You are not authorized!"
     end
   end
+
+  def posts
+    @blogs = Blog.where(:school_id => current_admin.school.id)
+  end
 end

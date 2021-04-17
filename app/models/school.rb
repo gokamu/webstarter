@@ -17,6 +17,7 @@ class School < ApplicationRecord
   
   has_many :students
   has_many :grades
+  has_many :blogs
   belongs_to :admin, class_name: "Admin", foreign_key: "admin_id"
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
