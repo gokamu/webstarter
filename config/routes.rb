@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # constraints Domain do 
   #   get "schools/:id", to: "schools#show"
   # end
-
   devise_for :admins, controllers: {
     registrations: "admins/registrations",
     sessions: "admins/sessions",
@@ -59,8 +58,10 @@ Rails.application.routes.draw do
     get "/createteacher", to: "admins#create_teachers"
     get "/classes", to: "admins#classes"
     get "/posts", to: "admins#posts"
+    get "/domain", to: "admins#domain"
   end
   resources :student_courses, only: [:create, :destroy]
   resources :teacher_courses, only: [:create, :destroy]
   resources :teacher_grades, only: [:create, :destroy]
+  get 'schools/:id/admin', to: 'admins#show'
 end

@@ -2,8 +2,14 @@
 <%= render 'dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Welcome!</strong> click create teacher to add teachers to your school. To assign a course/class to a teacher just click the name of the teacher and you will be taken to the teacher dashboard on the left side you will see the manage course/grades button.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <!-- Page Heading -->
-  <%= link_to "Create Teacher", new_teacher_registration_path %>
+  <%= link_to "Create Teacher", new_teacher_registration_path, class: "btn btn-success" %>
   <h1>Teachers</h1>
   <table>
     <thead>

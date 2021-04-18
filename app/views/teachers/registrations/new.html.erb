@@ -1,12 +1,15 @@
 <% if admin_signed_in? %>
-<div class="row justify-content-md-center">
-  <div class="col col-lg-4 mt-4">
-    <div class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <h2 class="text-center">Create Teacher</h2>
-          <div class="column mt-4">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-md-flex col-md-4 col-lg-6 bg-image align-items-center px-5 py-5">
+      <p><b>Create the teacher account, add unique username and email e.g teachername and teachername@yourschoolname.ac.zw, you can create simple passwords for the teachers which they can change later when they are logged in</b></p>
+    </div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= f.error_notification %>
               <div class="field">
                 <div class="control">
@@ -40,6 +43,9 @@
                 </div>
               </div>
             <% end %>
+            <br />
+             <%= link_to 'Back', current_admin %>
+            </div>
           </div>
         </div>
       </div>

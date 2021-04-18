@@ -1,6 +1,12 @@
 <%= render 'admins/dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Welcome!</strong> click create courses button and enter the name of your course e.g Mathematics. You can also see if the are students taking that course just click the students button below
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <p>
   <strong>Class:</strong>
   <%= @grade.name %>
@@ -47,7 +53,7 @@
     <tbody>
       <% @grade_students.each do |student| %>
         <tr>
-          <td><%= link_to student.email, [student.school, student] %></td>
+          <td><%= link_to student.name, [student.school, student] %></td>
         </tr>
       <% end %>
     </tbody>

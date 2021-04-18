@@ -74,4 +74,8 @@ class AdminsController < ApplicationController
   def posts
     @blogs = Blog.where(:school_id => current_admin.school.id)
   end
+
+  def domain
+    
+  end
 end

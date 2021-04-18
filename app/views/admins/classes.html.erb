@@ -1,6 +1,12 @@
 <%= render 'dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Welcome!</strong> click create class button and enter the name of your class e.g 1 blue. To create a course for the class just click the name of the class
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <!-- Page Heading -->
   <h1>Classes</h1>
   <button id="add__new__list" type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Create class</button>

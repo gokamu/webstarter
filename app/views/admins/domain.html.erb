@@ -1,0 +1,51 @@
+<%= render 'dash' %>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+    <div class="row justify-content-center">
+        <h3>Buy your school domain name</h3>
+        <div class="col-12 col-md-10 col-lg-8 my-3">
+            <form >
+                <div class="row no-gutters align-items-center form-group">
+                    <div class="col-9">
+                        <input aria-describedby="domainHelp" class="form-control form-control-lg form-control-borderless" type="search" placeholder="e.g schoolname.ac.zw">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-search h4 text-white text-body"></i></button>
+                    </div>
+                    <!--end of col-->
+                    <small id="domainHelp" class="form-text text-muted">Search to see if the domain name is available.</small>
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+    <hr>
+    <h3>IF you already have a domain put the nameservers here</h3>
+    <form>
+        <div class="row my-2">
+            <div class="col">
+            <input type="text" class="form-control" placeholder="nameserver 1">
+            </div>
+            <div class="col">
+            <input type="text" class="form-control" placeholder="nameserver 2">
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col">
+            <input type="text" class="form-control" placeholder="nameserver 3">
+            </div>
+            <div class="col">
+            <input type="text" class="form-control" placeholder="nameserver 4">
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Make these default</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<!-- /.container-fluid -->
+<%= render 'dashend' %>

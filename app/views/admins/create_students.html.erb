@@ -1,8 +1,14 @@
 <%= render 'dash' %>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Welcome!</strong> click create student to add students to your school. To assign a course to a student just click the name of the student and you will be taken to the student dashboard on the left side you will see the add course button.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <!-- Page Heading -->
-  <%= link_to "Create Student", new_student_registration_path %>
+  <%= link_to "Create Student", new_student_registration_path, class: "btn btn-success" %>
   <h1>Students</h1>
   <table>
     <thead>

@@ -1,11 +1,14 @@
-<div class="row justify-content-md-center">
-  <div class="col col-lg-4 mt-4">
-    <div class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <h2 class="text-center">Create School</h2>
-          <div class="column mt-4">
-          <%= form_with(model: school, local: true) do |form| %>
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-md-flex col-md-4 col-lg-6 bg-image align-items-center px-5 py-5">
+      <p><b>Now fill all the required details, the name of the school which will be used on the school page. If you do not have a logo you can leave it blank.</b></p>
+    </div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+               <%= form_with(model: school, local: true) do |form| %>
             <% if school.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
@@ -19,13 +22,38 @@
             <div class="field">
               <div class="control">
               <%= form.label :name %>
-              <%= form.text_field :name, class:"form-control" %>
+              <%= form.text_field :name, required: true, class:"form-control", placeholder: "Schoolname high" %>
             </div>
             </div>
             <div class="field">
             <div class="control">
               <%= form.label :description %>
-              <%= form.text_area :description, class:"form-control" %>
+              <%= form.text_area :description, required: true, class:"form-control" %>
+            </div>
+            </div>
+             <div class="field">
+              <div class="control">
+              <%= form.label :address %>
+              <%= form.text_field :address, required: true, class:"form-control" %>
+            </div>
+            </div>
+            <div class="field">
+            <div class="control">
+              <%= form.label :contact %>
+              <%= form.text_area :contact, required: true, class:"form-control" %>
+            </div>
+            </div>
+             <div class="field">
+              <div class="control">
+              <%= form.label :logo %>
+              <%= form.file_field :logo, class:"form-control" %>
+            </div>
+            </div>
+            <div class="field">
+            <div class="control">
+              <%= form.label :banking %>
+              <%= form.text_area :banking, class:"form-control" %>
+              <small class="form-text text-muted">Enter school banking details which will show at the bottom of page</small>
             </div>
             </div>
             <div class="field">
@@ -34,6 +62,7 @@
             </div>
             </div>
           <% end %>
+            </div>
           </div>
         </div>
       </div>

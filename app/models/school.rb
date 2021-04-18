@@ -1,4 +1,8 @@
 class School < ApplicationRecord
+
+  mount_uploader :logo, FileUploader
+  serialize :logo, JSON
+
   after_save do |school|  
     heroku_environments = %w(production staging)
     if school.custom_domain && (heroku_environments.include? Rails.env)

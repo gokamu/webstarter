@@ -1,19 +1,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-light inde" id="mainNav">
     <div class="container">
-      <% if teacher_signed_in? %>
-        <%= link_to current_teacher.school.name.capitalize, current_teacher.school, class: "navbar-brand" %>
-      <% elsif admin_signed_in? %>
-        <% if current_admin.school != nil %>
-          <%= link_to current_admin.school.name.capitalize, current_admin.school, class: "navbar-brand" %>
-        <% else %>
-          <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
-        <% end %>
-      <% elsif student_signed_in? %>
-        <%= link_to current_student.school.name.capitalize, current_student.school, class: "navbar-brand" %>
-      <% elsif %>
-        <%= link_to @school.name.capitalize, @school, class: "navbar-brand" %>
-      <% end %>
+      <%= render '/schools/logo_checker' %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
