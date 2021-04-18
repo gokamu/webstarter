@@ -1,25 +1,201 @@
-<style>
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
-hr {
-  margin: auto;
-  width: 40%;
-}
-</style>
-
-<div class="bgimg">
 <%= render 'layouts/header' %>
-  <div class="middle">
-    <h1>COMING SOON</h1>
-    <hr>
-    <p>35 days left</p>
-  </div>
-  <div class="bottomleft">
-    <p>Some text</p>
-  </div>
-</div>
+<div class="site-content">
+			<header class="hero" style='background-image: url("/assets/online.png");'>
+				<div class="container">
+					<div class="hero-content">
+						<h1 class="text-warning">Easy way to launch your website <br><strong>Simple and powerful</strong></h1>
+					</div>
+					
+					<form class="subscribe-form">
+						<input type="text" placeholder="Enter your email...">
+						<input type="submit" value="Get and acess" class="btn btn-primary">
+					</form>
+					
+					<span class="scrolldown">Scroll down to explore <br><i class="fa fa-chevron-down"></i></span>
+				</div>
+			</header> <!-- hero -->
 
+			<main class="main-content">
+				<div class="fullwidth-block">
+					<div class="container">
+						<h2 class="section-title">School landing page</h2>
+						<small class="section-subtitle">Admin, teacher and student dashboard</small>
+            <%= image_tag 'devices@2x.png', class: "figure" %>
+					</div>
+				</div> <!-- .fullwidth-block -->
 
+				<div class="fullwidth-block">
+					<div class="container">
+						<h2 class="section-title">All features included</h2>
+						<small class="section-subtitle">Voluptatem accusantum doloremque</small>
+
+						<div class="row">
+							<div class="col-md-3 col-sm-6">
+								<div class="feature">
+									<div class="feature-icon"><img src="images/icon-pie-chart.png" alt="" class="icon"></div>
+									<h3 class="feature-title">Easy Analitycs</h3>
+									<p>Neque porro quisquam est qui dolorem ipsum quia dolor amet consectetur adipisci velit sed.</p>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="feature">
+									<div class="feature-icon"><img src="images/icon-mobile.png" alt="" class="icon"></div>
+									<h3 class="feature-title">Smartphone compatible</h3>
+									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="feature">
+									<div class="feature-icon"><img src="images/icon-piggy-bank.png" alt="" class="icon"></div>
+									<h3 class="feature-title">Time-saving</h3>
+									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="feature">
+									<div class="feature-icon"><img src="images/icon-lock.png" alt="" class="icon"></div>
+									<h3 class="feature-title">Solid Protection</h3>
+									<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+								</div>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</div> <!-- .fullwidth-block -->
+
+				
+				<div class="fullwidth-block">
+					<div class="container">
+						<h2 class="section-title">Fit pricing to your needs</h2>
+						<small class="section-subtitle">Labore magnam quaerat voluptatem</small>
+
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="pricing">
+									<div class="pricing-header">
+										<h3 class="pricing-title">Basic Package</h3>
+										<div class="price">
+											<span class="num"><sup>$</sup>49<small>/ per year</small></span>
+										</div>
+									</div>
+									<div class="pricing-checklist">
+										<ul>
+											<li class="check">Voluptatem accusantium </li>
+											<li class="check">Doloremque laudantium totam</li>
+											<li class="check">Aperiam eaque ipsa quae</li>
+											<li>Inventore veritatis architecto </li>
+											<li>Beatae vitae dicta explicabo</li>
+											<li>Ipsam voluptatem quia voluptas</li>
+											<li>Aspernatur aut odit aut fugit</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="pricing featured">
+									<div class="pricing-header">
+										<h3 class="pricing-title">Medium Package</h3>
+										<div class="price">
+											<span class="num"><sup>$</sup>99<small>/ per year</small></span>
+										</div>
+									</div>
+									<div class="pricing-checklist">
+										<ul>
+											<li class="check">Voluptatem accusantium </li>
+											<li class="check">Doloremque laudantium totam</li>
+											<li class="check">Aperiam eaque ipsa quae</li>
+											<li class="check">Inventore veritatis architecto </li>
+											<li class="check">Beatae vitae dicta explicabo</li>
+											<li>Ipsam voluptatem quia voluptas</li>
+											<li>Aspernatur aut odit aut fugit</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="pricing">
+									<div class="pricing-header">
+										<h3 class="pricing-title">Professional Package</h3>
+										<div class="price">
+											<span class="num"><sup>$</sup>199<small>/ per year</small></span>
+										</div>
+									</div>
+									<div class="pricing-checklist">
+										<ul>
+											<li class="check">Voluptatem accusantium </li>
+											<li class="check">Doloremque laudantium totam</li>
+											<li class="check">Aperiam eaque ipsa quae</li>
+											<li class="check">Inventore veritatis architecto </li>
+											<li class="check">Beatae vitae dicta explicabo</li>
+											<li class="check">Ipsam voluptatem quia voluptas</li>
+											<li class="check">Aspernatur aut odit aut fugit</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</div> <!-- .fullwidth-block -->
+
+				<div class="fullwidth-block" data-bg-color="#e6e6e6">
+					<div class="container">
+						<h2 class="section-title">Frequently asked questions</h2>
+						<small class="section-subtitle">Laboriosam nisi aliquid commodi dolor</small>
+
+						<div class="row">
+							<div class="col-md-4">
+								<dl>
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+								</dl>
+							</div>
+							<div class="col-md-4">
+								<dl>
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+								</dl>
+							</div>
+							<div class="col-md-4">
+								<dl>
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+
+									<dt>Excepteur sint occaecat cupidatat?</dt>
+									<dd>Natus error voluptatem doloremque laudantium totam rem aperiam, eaque ipsa quae inventore veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit consequuntur.</dd>
+								</dl>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</div> <!-- .fullwidth-block -->
+
+				<div class="fullwidth-block footer-cta" style='background-image: url("/assets/footer-bg.jpg");'>
+					<div class="container">
+						<div class="hero-content">
+							<h1>Easy way to launch your website <br><strong>Simple and powerful</strong></h1>
+						</div>
+
+						<form class="subscribe-form">
+							<input type="text" placeholder="Enter your email...">
+							<input type="submit" value="Get and acess" class="btn btn-primary">
+						</form>
+					</div>
+				</div>
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<p>Copyright <%= Time.current.year %> by Hekani. All rights reserved</p>
+					<div class="social-links">
+						<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+						<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+					</div>
+				</div>
+			</footer>
+		</div>
