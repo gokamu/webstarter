@@ -2,7 +2,29 @@ require 'custom_domain'
 
 Rails.application.routes.draw do
   constraints CustomDomain do 
-    root to: "schools#show"
+    root to: resources :schools, except: [:destroy] do
+      resources :blogs
+      resources :grades, only: [:edit, :create, :destroy, :update, :show] do
+        resources :courses, only: [:show] do
+          member do
+            get :followers, :course_teachers
+          end
+        end
+        member do
+          get :grade_teachers
+        end
+      end
+      resources :students, only: [:show] do
+        member do
+          get :following
+        end
+      end
+      resources :teachers, only: [:show] do
+        member do
+          get :grade_taught, :course_taught
+        end
+      end
+    end
   end
 
   devise_for :admins, controllers: {
@@ -24,6 +46,7 @@ Rails.application.routes.draw do
   resources :assignment_scores
   resources :blogs
   resources :courses, only: [:edit, :create, :destroy, :update]
+
   resources :schools, except: [:destroy] do
     resources :blogs
     resources :grades, only: [:edit, :create, :destroy, :update, :show] do
@@ -48,7 +71,7 @@ Rails.application.routes.draw do
     end
   end
   
-  # root "home#index"
+  get "/", to: "home#index"
 
   resources :admins, :only => [:show] do
     get "/createstudent", to: "admins#create_students"
