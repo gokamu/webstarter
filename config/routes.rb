@@ -2,7 +2,7 @@ require 'custom_domain'
 
 Rails.application.routes.draw do
   constraints CustomDomain do 
-    get "schools/:id", to: "schools#show"
+    get "/schools/:id", to: "schools#show"
   end
 
   devise_for :admins, controllers: {

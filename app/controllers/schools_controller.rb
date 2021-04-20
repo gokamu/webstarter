@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
-  before_action :set_school, only: [:show, :edit, :update, :destroy]
+  before_action :find_school, only: :show
+  before_action :set_school, only: [:edit, :update, :destroy]
  
   def index
     @schools = School.all
@@ -7,7 +8,6 @@ class SchoolsController < ApplicationController
 
 
   def show
-    @school = School.find_by(domain: request.host) || School.find(params[:id])
     check_signed_user
     @blogs = Blog.where(school_id: @school.id)
   end
@@ -46,6 +46,10 @@ class SchoolsController < ApplicationController
   end
 
   private
+
+  def find_school
+    @school = School.find_by(domain: request.host) || School.find(params[:id])
+  end
 
   def set_school
     @school = School.find(params[:id])
