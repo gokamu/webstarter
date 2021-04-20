@@ -48,18 +48,7 @@ class SchoolsController < ApplicationController
   private
 
   def find_school
-    if request.subdomain == 'www'
-      req = request.host[4..-1]
-    else
-      req = request.host
-    end
-
-    # first test if there exists a Site with the requested domain,
-    # then check if it's a subdomain of the application's main domain
-    @site = School.find_by(domain: req) || School.find_by(slug: request.subdomain)
-
-    # if a matching site wasn't found, redirect the user to the www.<root url>
-    redirect_to root_url(subdomain: 'www') unless @site
+    @school = School.find_by(domain: request.host) || School.find(params[:id])
   end
 
   def set_school
