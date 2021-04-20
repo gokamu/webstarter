@@ -2,7 +2,7 @@ require 'custom_domain'
 
 Rails.application.routes.draw do
   constraints CustomDomain do 
-    root to: resources :schools, except: [:destroy] do
+    root to: "schools#show" do
       resources :blogs
       resources :grades, only: [:edit, :create, :destroy, :update, :show] do
         resources :courses, only: [:show] do
