@@ -2,7 +2,7 @@ require 'custom_domain'
 
 Rails.application.routes.draw do
   constraints CustomDomain do 
-    get "/schools/:id", to: "schools#show"
+    root to: "schools#show"
   end
 
   devise_for :admins, controllers: {
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     end
   end
   
-  root "home#index"
+  # root "home#index"
 
   resources :admins, :only => [:show] do
     get "/createstudent", to: "admins#create_students"
