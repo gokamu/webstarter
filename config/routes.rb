@@ -1,13 +1,10 @@
 require 'custom_domain'
 
 Rails.application.routes.draw do
-  constraints Subdomain do 
+  constraints CustomDomain do 
     get "schools/:id", to: "schools#show"
   end
 
-  constraints Domain do 
-    get "schools/:id", to: "schools#show"
-  end
   devise_for :admins, controllers: {
     registrations: "admins/registrations",
     sessions: "admins/sessions",
