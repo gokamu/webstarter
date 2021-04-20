@@ -4,6 +4,6 @@ class CustomDomain
   end 
   
   def self.matching_school?(request) 
-    School.where(:custom_domain => request.host).any? 
+    School.where(:domain => request.host).any? 
   end
 end
