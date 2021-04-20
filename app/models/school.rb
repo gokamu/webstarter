@@ -1,5 +1,5 @@
 class School < ApplicationRecord
-  after_save :update_heroku_domains if "custom_domain.present?"
+  after_save :update_heroku_domains if :domain.present?
 
   mount_uploader :logo, FileUploader
   serialize :logo, JSON
@@ -33,9 +33,9 @@ class School < ApplicationRecord
   private
 
   def update_heroku_domains
-    if self.custom_domain_changed? && self.custom_domain_was.present?
-      HerokuDomainJob.perform_later(self.custom_domain_was, "remove")
+    if self.domain_changed? && self.domain_was.present?
+      HerokuDomainJob.perform_later(self.domain_was, "remove")
     end
-    HerokuDomainJob.perform_later(self.custom_domain, "add")
+    HerokuDomainJob.perform_later(self.domain, "add")
   end
 end

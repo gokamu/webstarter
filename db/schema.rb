@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_140904) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "admin_id"
     t.string "slug"
-    t.string "custom_domain"
+    t.string "domain"
     t.text "address"
     t.text "contact"
     t.text "banking"

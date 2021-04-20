@@ -7,7 +7,7 @@ class SchoolsController < ApplicationController
 
 
   def show
-    @school = School.find_by(custom_domain: request.host) || School.find(params[:id])
+    @school = School.find_by(domain: request.host) || School.find(params[:id])
     check_signed_user
     @blogs = Blog.where(school_id: @school.id)
   end
@@ -52,6 +52,6 @@ class SchoolsController < ApplicationController
   end
 
   def school_params
-    params.require(:school).permit(:name, :description, :logo, :banking, :address, :contact, :custom_domain)
+    params.require(:school).permit(:name, :description, :logo, :banking, :address, :contact, :domain)
   end
 end
