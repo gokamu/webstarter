@@ -48,7 +48,7 @@
               <%= link_to current_student.name, [current_student.school, current_student], class: "dropdown-item" %>
               <%= link_to "Go home to Log Out", current_student.school, class: "dropdown-item" %>
             <% else %>
-              <%= link_to "Sign In", new_student_session_path, class: "dropdown-item" %>
+              <%= link_to "Sign In", school_students_sign_in_path, class: "dropdown-item" %>
             <% end %>
           </div>
         </li>

@@ -46,8 +46,10 @@ Rails.application.routes.draw do
   resources :assignment_scores
   resources :blogs
   resources :courses, only: [:edit, :create, :destroy, :update]
-
   resources :schools, except: [:destroy] do
+    get "students/sign_in", to: "students/sessions#new"
+    post "students/sign_in", to: "students/sessions#create"
+    delete "students/sign_out", to: "students/sessions#destroy"
     resources :blogs
     resources :grades, only: [:edit, :create, :destroy, :update, :show] do
       resources :courses, only: [:show] do
