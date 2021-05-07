@@ -3,6 +3,7 @@ require "custom_domain"
 Rails.application.routes.draw do
   constraints CustomDomain do
     root to: "schools#show" do
+      get "admin", to: "admins#show"
       devise_scope :student do
         get "students/sign_in", to: "students/sessions#new"
         get "students/sign_out", to: "students/sessions#destroy"
