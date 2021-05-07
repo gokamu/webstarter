@@ -1,8 +1,16 @@
-require 'custom_domain'
+require "custom_domain"
 
 Rails.application.routes.draw do
-  constraints CustomDomain do 
+  constraints CustomDomain do
     root to: "schools#show" do
+      devise_scope :student do
+        get "students/sign_in", to: "students/sessions#new"
+        get "students/sign_out", to: "students/sessions#destroy"
+      end
+      devise_scope :teacher do
+        get "teachers/sign_in", to: "teachers/sessions#new"
+        get "teachers/sign_out", to: "teachers/sessions#destroy"
+      end
       resources :blogs
       resources :grades, only: [:edit, :create, :destroy, :update, :show] do
         resources :courses, only: [:show] do
@@ -28,9 +36,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :admins, controllers: {
-    registrations: "admins/registrations",
-    sessions: "admins/sessions",
-  }
+                        registrations: "admins/registrations",
+                        sessions: "admins/sessions",
+                      }
   devise_for :students, controllers: {
                           registrations: "students/registrations",
                           sessions: "students/sessions",
@@ -47,9 +55,14 @@ Rails.application.routes.draw do
   resources :blogs
   resources :courses, only: [:edit, :create, :destroy, :update]
   resources :schools, except: [:destroy] do
-    get "students/sign_in", to: "students/sessions#new"
-    post "students/sign_in", to: "students/sessions#create"
-    delete "students/sign_out", to: "students/sessions#destroy"
+    devise_scope :student do
+      get "students/sign_in", to: "students/sessions#new"
+      get "students/sign_out", to: "students/sessions#destroy"
+    end
+    devise_scope :teacher do
+      get "teachers/sign_in", to: "teachers/sessions#new"
+      get "teachers/sign_out", to: "teachers/sessions#destroy"
+    end
     resources :blogs
     resources :grades, only: [:edit, :create, :destroy, :update, :show] do
       resources :courses, only: [:show] do
@@ -72,7 +85,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   get "/", to: "home#index"
 
   resources :admins, :only => [:show] do
@@ -85,5 +98,5 @@ Rails.application.routes.draw do
   resources :student_courses, only: [:create, :destroy]
   resources :teacher_courses, only: [:create, :destroy]
   resources :teacher_grades, only: [:create, :destroy]
-  get 'schools/:id/admin', to: 'admins#show'
+  get "schools/:id/admin", to: "admins#show"
 end

@@ -129,6 +129,8 @@ GEM
     msgpack (1.4.2)
     multi_json (1.15.0)
     nio4r (2.5.7)
+    nokogiri (1.11.2-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -245,6 +247,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -274,7 +277,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.11
+   2.2.15

@@ -22,14 +22,6 @@
     <% end %>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" href="index.html">
-        <i class="fa fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -93,7 +85,7 @@
                   <% end %>
                 <% end %>
               <% else %>
-              <%= link_to "Add at least 1 course", school_grade_path(grade.school, grade), class: "collapse-item" %>
+                <%= link_to "Add at least 1 course", school_grade_path(grade.school, grade), class: "collapse-item" %>
               <% end %>
             <% end %>
           </div>
