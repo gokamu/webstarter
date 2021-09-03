@@ -10,7 +10,11 @@
         <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
       <% end %>
     <% elsif student_signed_in? %>
-      <%= link_to current_student.school.name.capitalize, current_student.school, class: "navbar-brand" %>
+      <% if current_student.school.domain.present? %>
+        <%= link_to current_student.school.name.capitalize, current_student.school,  class: "navbar-brand" %>
+      <% else %>
+        <%= link_to current_student.school.name.capitalize, current_student.school,  class: "navbar-brand" %>
+      <% end %>
     <% elsif %>
       <%= link_to @school.name.capitalize, @school, class: "navbar-brand" %>
     <% end %>

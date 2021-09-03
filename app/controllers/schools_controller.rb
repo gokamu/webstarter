@@ -1,11 +1,10 @@
 class SchoolsController < ApplicationController
   before_action :find_school, only: :show
   before_action :set_school, only: [:edit, :update, :destroy]
- 
+
   def index
     @schools = School.all
   end
-
 
   def show
     check_signed_user
@@ -32,7 +31,6 @@ class SchoolsController < ApplicationController
     end
   end
 
- 
   def update
     respond_to do |format|
       if @school.update(school_params)

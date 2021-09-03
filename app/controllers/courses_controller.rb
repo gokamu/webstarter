@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     @auth_admin = admin_signed_in? && school_grade_course_path(current_admin.school.id, @course.grade, @course)
     @auth_course = school_grade_course_path(@course.grade.school_id, @course.grade, @course)
     @auth_student = student_signed_in? && current_student.following?(@course)
-    @auth_teacher = teacher_signed_in? && current_teacher.course_taught?(@course) 
+    @auth_teacher = teacher_signed_in? && current_teacher.course_taught?(@course)
 
     # this redicts users who are not authorized to access the course show page
     if !(@auth_admin == @auth_course || @auth_student || @auth_teacher)
@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to school_grade_course_path(current_admin.school.id, @course.grade, @course), notice: "Course was successfully created." }
+        format.html { redirect_to school_grade_course_path(current_admin.school, @course.grade, @course), notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }

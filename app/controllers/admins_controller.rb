@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :authenticate_admin!
+
   def show
     @admin = Admin.find(params[:id])
 
@@ -76,6 +77,5 @@ class AdminsController < ApplicationController
   end
 
   def domain
-    
   end
 end

@@ -3,17 +3,14 @@ class School < ApplicationRecord
 
   mount_uploader :logo, FileUploader
   serialize :logo, JSON
-  
+
   has_many :students
   has_many :grades
   has_many :blogs
   belongs_to :admin, class_name: "Admin", foreign_key: "admin_id"
-  # extend FriendlyId
-  # friendly_id :name, use: [:slugged, :finders]
+  extend FriendlyId
+  friendly_id :uuid, use: [:slugged, :finders]
 
-  # def should_generate_new_friendly_id?
-  #   name_changed?
-  # end
   private
 
   def update_heroku_domains

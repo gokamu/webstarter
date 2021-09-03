@@ -20,7 +20,6 @@ class GradesController < ApplicationController
       end
       flash[:alert] = "You are not authorized!"
     end
-
   end
 
   # GET /grades/new

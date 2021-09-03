@@ -1,41 +1,41 @@
 <% if teacher_signed_in? %>
-    <% if @school.logo_url.present? %>
-        <%= link_to current_teacher.school, class: "navbar-brand" do %>
-            <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
-            <small><%= current_teacher.school.name.capitalize %></small>
-        <% end %>
-    <% else %>
-        <%= link_to current_teacher.school.name.capitalize, current_teacher.school, class: "navbar-brand" %>
+  <% if @school.logo_url.present? %>
+    <%= link_to current_teacher.school, class: "navbar-brand" do %>
+      <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
+      <small><%= current_teacher.school.name.capitalize %></small>
     <% end %>
+  <% else %>
+    <%= link_to current_teacher.school.name.capitalize, current_teacher.school, class: "navbar-brand" %>
+  <% end %>
 <% elsif admin_signed_in? %>
-    <% if current_admin.school != nil %>
-        <% if @school.logo_url.present? %>
-            <%= link_to current_admin.school, class: "navbar-brand" do %>
-                <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
-                <small><%= current_admin.school.name.capitalize %></small>
-            <% end %>
-        <% else %>
-            <%= link_to current_admin.school.name.capitalize, current_admin.school, class: "navbar-brand" %>
-        <% end %>
-    <% else %>
-        <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
-    <% end %>
-<% elsif student_signed_in? %>
+  <% if current_admin.school != nil %>
     <% if @school.logo_url.present? %>
-        <%= link_to current_student.school, class: "navbar-brand" do %>
-            <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
-            <small><%= current_student.school.name.capitalize %></small>
-        <% end %>
+      <%= link_to current_admin.school, class: "navbar-brand" do %>
+        <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
+        <small><%= current_admin.school.name.capitalize %></small>
+      <% end %>
     <% else %>
-        <%= link_to current_student.school.name.capitalize, current_student.school, class: "navbar-brand" %>
+      <%= link_to current_admin.school.name.capitalize, current_admin.school, class: "navbar-brand" %>
     <% end %>
+  <% else %>
+    <%= link_to "create school",  new_school_path, class: "navbar-brand" %>
+  <% end %>
+<% elsif student_signed_in? %>
+  <% if @school.logo_url.present? %>
+    <%= link_to current_student.school, class: "navbar-brand" do %>
+      <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
+      <small><%= current_student.school.name.capitalize %></small>
+    <% end %>
+  <% else %>
+    <%= link_to current_student.school.name.capitalize, current_student.school, class: "navbar-brand" %>
+  <% end %>
 <% elsif %>
-<% if @school.logo_url.present? %>
-        <%= link_to @school, class: "navbar-brand" do %>
-            <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
-            <small><%= @school.name.capitalize %></small>
-        <% end %>
-    <% else %>
-        <%= link_to @school.name.capitalize, @school, class: "navbar-brand" %>
+  <% if @school.logo_url.present? %>
+    <%= link_to @school, class: "navbar-brand" do %>
+      <img src="<%= @school.logo_url %>" width="50" height="50" class="img-fluid" />
+      <small><%= @school.name.capitalize %></small>
     <% end %>
+  <% else %>
+    <%= link_to @school.name.capitalize, @school, class: "navbar-brand" %>
+  <% end %>
 <% end %>
